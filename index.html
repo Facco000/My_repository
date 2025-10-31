@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>La Nostra Escape Room</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="intro">
+        <h1>Benvenuta nella nostra escape room</h1>
+        <p>
+          Raccogli tutti i ricordi, risolvi gli enigmi e sblocca il messaggio
+          finale.
+        </p>
+      </header>
+
+      <main class="room">
+        <section class="puzzle" id="puzzle-photo" data-digit="3">
+          <h2>Il Quadro</h2>
+          <button class="frame-button" data-target="photo-modal">
+            Osserva la foto
+          </button>
+
+          <dialog class="modal" id="photo-modal">
+            <div class="modal-contents">
+              <img
+                class="memory-photo blurred"
+                src="assets/images/puzzle1.jpg"
+                alt="Ricordo speciale"
+              />
+              <p class="prompt">Dove eravamo qui?</p>
+              <form class="answer-form" data-puzzle="photo">
+                <label>
+                  <span>Risposta:</span>
+                  <input
+                    type="text"
+                    name="answer"
+                    autocomplete="off"
+                    required
+                  />
+                </label>
+                <div class="actions">
+                  <button type="submit">Conferma</button>
+                  <button type="button" class="close-modal">Chiudi</button>
+                </div>
+              </form>
+              <p class="feedback" hidden></p>
+            </div>
+          </dialog>
+        </section>
+
+        <section class="puzzle" id="puzzle-anime" data-digit="7">
+          <h2>La Scena Anime</h2>
+          <button class="frame-button" data-target="anime-modal">
+            Guarda la foto
+          </button>
+
+          <dialog class="modal" id="anime-modal">
+            <div class="modal-contents">
+              <img
+                class="anime-still blurred"
+                src="assets/images/puzzle2.jpg"
+                alt="Scena dell'anime"
+              />
+              <p class="prompt">
+                Qual è il titolo dell'anime?
+              </p>
+              <form class="answer-form" data-puzzle="anime">
+                <label>
+                  <span>Risposta:</span>
+                  <input
+                    type="text"
+                    name="answer"
+                    autocomplete="off"
+                    required
+                  />
+                </label>
+                <div class="actions">
+                  <button type="submit">Conferma</button>
+                  <button type="button" class="close-modal">Chiudi</button>
+                </div>
+              </form>
+              <p class="feedback" hidden></p>
+            </div>
+          </dialog>
+
+          <button type="button" class="stop-anime" hidden>Ferma la sigla</button>
+        </section>
+
+        <section class="puzzle" id="puzzle-date" data-digit="1">
+          <h2>Il Calendario</h2>
+          <div class="puzzle-card">
+            <p class="prompt">
+              Ricordi la data del nostro primo bacio?
+            </p>
+            <form class="answer-form" data-puzzle="date">
+              <label>
+                <span>Inserisci la data (formato GG/MM/AAAA):</span>
+                <input
+                  type="text"
+                  name="answer"
+                  placeholder="es. dd/mm/yyyy"
+                  autocomplete="off"
+                  required
+                />
+              </label>
+              <button type="submit">Conferma</button>
+            </form>
+            <p class="feedback" hidden></p>
+          </div>
+        </section>
+
+        <section class="puzzle" id="puzzle-music" data-digit="9">
+          <h2>Il Lettore Musicale</h2>
+          <div class="puzzle-card">
+            <audio
+              class="memory-clip"
+              id="memory-clip"
+              src="assets/audio/puzzle4.mp3"
+              preload="auto"
+            ></audio>
+            <button type="button" class="play-audio">Riproduci Ricordo</button>
+            <form class="answer-form" data-puzzle="music">
+              <p class="prompt">
+                Qual è il titolo della canzone?
+              </p>
+              <label>
+                <span>Risposta:</span>
+                <input
+                  type="text"
+                  name="answer"
+                  autocomplete="off"
+                  required
+                />
+              </label>
+              <button type="submit">Conferma</button>
+            </form>
+            <p class="feedback" hidden></p>
+          </div>
+        </section>
+      </main>
+
+      <aside class="code-panel" aria-live="polite">
+        <h3>Codice da Trovare</h3>
+        <ul id="code-digits">
+          <li data-slot="1">_</li>
+          <li data-slot="2">_</li>
+          <li data-slot="3">_</li>
+          <li data-slot="4">_</li>
+        </ul>
+      </aside>
+
+      <section class="final-door">
+        <h2>La Porta Finale</h2>
+        <p>
+          Inserisci le quattro cifre per aprire la porta e sbloccare la sorpresa.
+        </p>
+        <form id="door-form">
+          <label>
+            <span>Codice:</span>
+            <input
+              type="text"
+              name="code"
+              maxlength="4"
+              pattern="[0-9]{4}"
+              required
+            />
+          </label>
+          <button type="submit">Apri la porta</button>
+        </form>
+        <p class="feedback" hidden></p>
+      </section>
+
+      <section class="final-message" hidden>
+        <div class="message-card">
+          <p class="scrolling-letter">
+            Buon Compleanno Amore ❤️
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <audio id="success-sound" src="assets/audio/success.mp3" preload="auto"></audio>
+    <audio id="door-open-sound" src="assets/audio/door-open.mp3" preload="auto"></audio>
+    <script src="scripts/main.js" defer></script>
+  </body>
+</html>
